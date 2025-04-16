@@ -172,7 +172,7 @@ const ProductForm = () => {
   const handleLogout = () => {
     localStorage.removeItem('token'); // or any auth key
     Swal.fire('Logged out!', 'You have been successfully logged out.', 'success').then(() => {
-      window.location.href = '/';
+      window.location.href = '/login';
     });
   };
 

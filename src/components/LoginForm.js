@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom'; // ✅ Import
+import { useNavigate, Link } from 'react-router-dom'; // ✅ Include Link
 import {
   TextField,
   Button,
@@ -17,7 +17,6 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [responseMessage, setResponseMessage] = useState(null);
 
-
   const handleLogin = async (e) => {
     e.preventDefault();
     console.log("Sending to server:", { email, password });
@@ -26,17 +25,16 @@ const LoginForm = () => {
       setResponseMessage({ type: 'error', text: 'Please enter both email and password.' });
       return;
     }
-  
+
     try {
       const res = await axios.post("http://localhost:8080/api/loginadmin",
         { useremail: email, password },
         { headers: { "Content-Type": "application/json" } }
       );
-  
+
       setResponseMessage({ type: 'success', text: res.data.message });
       localStorage.setItem('token', res.data.token);
-  
-      // ✅ Show popup, then navigate
+
       Swal.fire({
         title: 'Login Successful!',
         text: 'Welcome back!',
@@ -44,10 +42,10 @@ const LoginForm = () => {
         confirmButtonText: 'OK'
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate('/product-form'); // ✅ Navigate only after clicking OK
+          navigate('/product-form');
         }
       });
-  
+
     } catch (err) {
       setResponseMessage({
         type: 'error',
@@ -55,7 +53,6 @@ const LoginForm = () => {
       });
     }
   };
-
 
   return (
     <Container maxWidth="sm">
@@ -101,6 +98,12 @@ const LoginForm = () => {
             Login
           </Button>
         </form>
+
+        {/* ✅ Signup Link */}
+        <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </Typography>
+
       </Box>
     </Container>
   );
