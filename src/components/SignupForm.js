@@ -50,7 +50,7 @@ const SignupForm = () => {
         });
       } else {
         Swal.fire("Success", res.data.message, "success").then(() => {
-          navigate('/login'); // ✅ redirect after success
+          navigate('/'); // ✅ redirect after success
         });
       }
     } catch (err) {
@@ -116,7 +116,7 @@ const SignupForm = () => {
         </form>
 
         <Typography variant="body2" align="center" sx={{ mt: 2 }}>
-          Already have an account? <Link to="/login">Login</Link>
+          Already have an account? <Link to="/">Login</Link>
         </Typography>
       </Box>
     </Container>
