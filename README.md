@@ -7,13 +7,16 @@ Node.js
 Express
 MongoDB
 Bootstrap / Tailwind CSS
+
 📦 Installation
 Clone the repo:
 git clone https://github.com/Santhiya-velayutham/Jewellery-product.git
 
+
 Install backend dependencies:
 cd Jewellery-product
 npm install
+
 
 Running the App
 cd Jewellery-product
