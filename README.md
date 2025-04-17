@@ -13,7 +13,7 @@ Clone the repo:
 git clone https://github.com/Santhiya-velayutham/Jewellery-product.git
 
 
-Install backend dependencies:
+Install fornt-end dependencies:
 cd Jewellery-product
 npm install
 
