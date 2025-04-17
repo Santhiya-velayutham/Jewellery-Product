@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
-import { useNavigate, Link } from 'react-router-dom'; // ✅ Include Link
+import { useNavigate, Link } from 'react-router-dom';
 import {
   TextField,
   Button,
@@ -20,15 +20,16 @@ const LoginForm = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     console.log("Sending to server:", { email, password });
-    
+
     if (!email?.trim() || !password?.trim()) {
       setResponseMessage({ type: 'error', text: 'Please enter both email and password.' });
       return;
     }
 
     try {
-      const res = await axios.post("http://localhost:8080/api/loginadmin",
-        { useremail: email, password },
+      const res = await axios.post(
+        "http://localhost:8080/api/admin/loginadmin",
+        { email, password },
         { headers: { "Content-Type": "application/json" } }
       );
 
@@ -99,11 +100,9 @@ const LoginForm = () => {
           </Button>
         </form>
 
-        {/* ✅ Signup Link */}
         <Typography variant="body2" align="center" sx={{ mt: 2 }}>
           Don't have an account? <Link to="/signup">Sign up</Link>
         </Typography>
-
       </Box>
     </Container>
   );
